@@ -14,7 +14,7 @@ const ForgotPassword = () => {
   const [errors, setErrors] = useState({});
   const [showNewPassword, setShowNewPassword] = useState(false); // Password visibility toggle
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false); // Confirm password visibility toggle
-  const [success, setSuccess] = useState(false); // Success state to show success message
+  const [, setSuccess] = useState(false); // Success state to show success message
   const navigate = useNavigate();
 
   const handleChange = (e) => {
