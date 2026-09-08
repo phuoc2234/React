@@ -68,3 +68,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Deploy on Render
+
+The product data is served by `json-server` from `src/bao.json`; the frontend cannot serve this API by itself.
+
+1. Create a Render **Web Service** for this repository with this start command:
+
+	```text
+	npx json-server --watch src/bao.json --host 0.0.0.0 --port $PORT
+	```
+
+2. Copy the Web Service URL, for example `https://my-products-api.onrender.com`.
+3. In the Render frontend service, add `REACT_APP_API_URL` with that URL, then redeploy the frontend.
+
+For local development, leave `REACT_APP_API_URL` unset and run `json-server --watch bao.json --port 2300` from the `src` directory.

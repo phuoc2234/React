@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../api';
 
 const Statistics = () => {
   const [products, setProducts] = useState([]);
@@ -15,9 +16,7 @@ const Statistics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsResponse = await fetch(
-          'http://localhost:2300/products'
-        );
+        const productsResponse = await fetch(apiUrl('/products'));
 
         const productsData = await productsResponse.json();
 

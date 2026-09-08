@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../api";
 
 function Cart({ cartItems = [], setCartItems }) {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function Cart({ cartItems = [], setCartItems }) {
     setIsLoggedIn(loggedInStatus);
 
     // Fetch products
-    fetch("http://localhost:2300/products")
+    fetch(apiUrl("/products"))
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

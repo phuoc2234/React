@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaArrowLeft } from "react-icons/fa";
 import Comments from "./Comments";
 import PropTypes from "prop-types";
+import { apiUrl } from "../api";
 
 // const API_URL = process.env.REACT_APP_API_URL || "http://localhost:2300";
 
@@ -23,7 +24,7 @@ function ProductDetail({ addToCart }) {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:2300/products");
+        const response = await fetch(apiUrl("/products"));
         const data = await response.json();
 
         if (isSubscribed) {

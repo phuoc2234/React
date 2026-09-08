@@ -6,6 +6,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Footer from "./Footer";
+import { apiUrl } from "../api";
 
 function Home({ addToCart }) {
   const [products, setProducts] = useState([]);
@@ -45,7 +46,7 @@ function Home({ addToCart }) {
   }, [banners]);
 
   useEffect(() => {
-    fetch("http://localhost:2300/products")
+    fetch(apiUrl("/products"))
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

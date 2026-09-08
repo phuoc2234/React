@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { apiUrl } from "../api";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -20,7 +21,7 @@ const ProductManagement = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:2300/products");
+      const response = await fetch(apiUrl("/products"));
       if (response.ok) {
         const data = await response.json();
         setProducts(data); // Cập nhật danh sách sản phẩm
@@ -59,7 +60,7 @@ const ProductManagement = () => {
       if (editIndex !== null) {
         // Cập nhật sản phẩm
         const updatedProduct = { ...form, id: products[editIndex].id };
-        const response = await fetch(`http://localhost:2300/products/${updatedProduct.id}`, {
+        const response = await fetch(apiUrl(`/products/${updatedProduct.id}`), {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedProduct),
@@ -74,7 +75,7 @@ const ProductManagement = () => {
       } else {
         // Thêm sản phẩm mới
         const newProduct = { ...form };
-        const response = await fetch("http://localhost:2300/products", {
+        const response = await fetch(apiUrl("/products"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newProduct),
@@ -104,7 +105,7 @@ const ProductManagement = () => {
     const globalIndex = index + (currentPage - 1) * itemsPerPage;
     const productToDelete = products[globalIndex];
     try {
-      const response = await fetch(`http://localhost:2300/products/${productToDelete.id}`, {
+      const response = await fetch(apiUrl(`/products/${productToDelete.id}`), {
         method: "DELETE",
       });
       if (response.ok) {
