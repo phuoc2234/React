@@ -190,7 +190,7 @@ function Home({ addToCart }) {
             />
           </div>
           <div className="search_text">
-            <h1>DANH SÁCH SẢN PHẨM</h1>
+            <h1>DANH SÁCH SẢN PHẨMmmmmmmmmmmmmmmmm</h1>
           </div>
         </div>
 
